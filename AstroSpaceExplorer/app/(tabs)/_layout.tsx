@@ -49,6 +49,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <AstroDexIcon fill={color} />,
         }}
       />
+      <Tabs.Screen
+          name="solar-system/index"
+          options={{
+            title: 'AstroDex Mini',
+            tabBarIcon: ({ color }) => <AstroDexIcon fill={color} />,
+          }}
+        />
     </Tabs>
   );
 }

@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 import { useFavorites } from '@/hooks/useFavorites';
 import { astroObjects } from '@/lib/aastroObjects';
+import { supabase } from '@/lib/supabase';
+import { useRouter } from 'expo-router';
 
 type AstroObject = {
   id: number;
@@ -24,6 +26,7 @@ type AstroObject = {
   image_url: string;
 };
 
+const router = useRouter();
 const typeFilters = ['All', 'planet', 'moon', 'star', 'Favorites'];
 
 export default function AstroDexMini() {
@@ -60,6 +63,21 @@ export default function AstroDexMini() {
 
   return (
     <View style={{ flex: 1, marginTop: 24 }}>
+
+      <TouchableOpacity
+        onPress={() => router.push('/solar-system/[planetId]')}
+        style={{
+          backgroundColor: '#007aff',
+          padding: 12,
+          marginHorizontal: 12,
+          marginBottom: 8,
+          borderRadius: 10,
+          alignItems: 'center',
+        }}
+      >
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>Explore Solar System 🌌</Text>
+      </TouchableOpacity>
+
       <TextInput
         placeholder="Search for 'planet' or 'moon'"
         value={searchQuery}
